@@ -35,7 +35,7 @@ TARGET_KERNEL_CONFIG := blu_spark_hammerhead_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/blu_spark
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 KERNEL_TOOLCHAIN_PREFIX := arm-cortex_a15-linux-gnueabihf-
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/Linaro-5.3/bin
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/ubertc6/bin
 
 # Uber Optimizations
 export CLANG_O3 := true
