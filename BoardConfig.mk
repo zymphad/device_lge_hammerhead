@@ -25,10 +25,24 @@ TARGET_NO_BOOTLOADER := true
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=hammerhead user_debug=31 maxcpus=2 msm_watchdog_v2.enable=1
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=hammerhead user_debug=31 maxcpus=2 msm_watchdog_v2.enable=1 androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02900000 --tags_offset 0x02700000
 
 TOUCH_BOOST_DEBUG := false
+
+# Define kernel config for inline building
+TARGET_KERNEL_CONFIG := blu_spark_hammerhead_defconfig
+TARGET_KERNEL_SOURCE := kernel/lge/blu_spark
+BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+KERNEL_TOOLCHAIN_PREFIX := arm-cortex_a15-linux-gnueabihf-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/Linaro-5.3/bin
+
+# Uber Optimizations
+export CLANG_O3 := true
+export STRICT_ALIASING := false
+export KRAIT_TUNINGS := true
+export GRAPHITE_OPTS := false
+export ENABLE_GCCONLY := true
 
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
